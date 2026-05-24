@@ -123,10 +123,10 @@ export function DraftReview({ draft, onUpdate, onApprove, isGenerating }: DraftR
       </div>
 
       {/* Sticky approval bar */}
-      <div className="sticky bottom-6 z-10 rounded-2xl border border-violet-900/50 bg-zinc-950/90 p-4 shadow-2xl shadow-black/50 backdrop-blur-sm">
-        <div className="flex items-center justify-between gap-4">
+      <div className="sticky bottom-4 z-10 rounded-2xl border border-violet-900/50 bg-zinc-950/90 p-4 shadow-2xl shadow-black/50 backdrop-blur-sm">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4 text-violet-400" />
+            <CheckCircle className="h-4 w-4 shrink-0 text-violet-400" />
             <p className="text-sm text-zinc-300">
               Happy with the plan?{' '}
               <span className="text-zinc-500">Generate your landing page.</span>
@@ -137,7 +137,7 @@ export function DraftReview({ draft, onUpdate, onApprove, isGenerating }: DraftR
             size="lg"
             onClick={onApprove}
             disabled={isGenerating || draft.sections.length === 0}
-            className="shrink-0 gap-2"
+            className="w-full gap-2 sm:w-auto sm:shrink-0"
           >
             {isGenerating ? (
               <>

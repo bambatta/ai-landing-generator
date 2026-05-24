@@ -53,9 +53,9 @@ export function PricingSection({ section, primaryColor }: PricingSectionProps) {
   const checkColor = COLOR_CHECK[primaryColor] ?? COLOR_CHECK.violet
 
   return (
-    <section className="px-4 py-24 sm:px-6 lg:px-8">
+    <section className="px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <div className="mx-auto max-w-5xl">
-        <div className="mb-16 text-center">
+        <div className="mb-10 text-center sm:mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
             {section.headline}
           </h2>

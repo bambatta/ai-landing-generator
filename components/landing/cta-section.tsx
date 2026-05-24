@@ -32,7 +32,7 @@ export function CTASection({ section, primaryColor }: CTASectionProps) {
   const btn = COLOR_BTN[primaryColor] ?? COLOR_BTN.violet
 
   return (
-    <section className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
       <div className={`pointer-events-none absolute inset-0 bg-gradient-to-b ${bgGradient}`} />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
 
