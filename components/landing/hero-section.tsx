@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import type { FinalSection } from '@/types/landing'
 
@@ -37,10 +38,23 @@ const COLOR_BTN: Record<string, string> = {
   cyan: 'from-cyan-600 to-sky-600 hover:from-cyan-500 hover:to-sky-500 shadow-cyan-500/25',
 }
 
+const COLOR_OVERLAY: Record<string, string> = {
+  violet: 'from-violet-950/60 via-indigo-950/40 to-purple-950/60',
+  blue: 'from-blue-950/60 via-cyan-950/40 to-sky-950/60',
+  emerald: 'from-emerald-950/60 via-teal-950/40 to-green-950/60',
+  orange: 'from-orange-950/60 via-amber-950/40 to-yellow-950/60',
+  rose: 'from-rose-950/60 via-pink-950/40 to-red-950/60',
+  cyan: 'from-cyan-950/60 via-sky-950/40 to-blue-950/60',
+}
+
 export function HeroSection({ section, brandName, primaryColor }: HeroSectionProps) {
   const gradient = COLOR_GRADIENTS[primaryColor] ?? COLOR_GRADIENTS.violet
   const glow = COLOR_GLOW[primaryColor] ?? COLOR_GLOW.violet
   const btn = COLOR_BTN[primaryColor] ?? COLOR_BTN.violet
+  const overlay = COLOR_OVERLAY[primaryColor] ?? COLOR_OVERLAY.violet
+
+  // Stable image seed from section id so the same page always shows the same photo
+  const imgSeed = section.id
 
   return (
     <section className="relative overflow-hidden px-4 pt-32 pb-24 sm:px-6 lg:px-8">
@@ -91,6 +105,47 @@ export function HeroSection({ section, brandName, primaryColor }: HeroSectionPro
 
         {/* Social proof hint */}
         <p className="mt-6 text-xs text-zinc-600">No credit card required · Free to get started</p>
+
+        {/* Product mockup */}
+        <div className="relative mx-auto mt-16 max-w-4xl">
+          {/* Ambient glow behind the mockup */}
+          <div
+            className={`pointer-events-none absolute -bottom-8 left-1/2 h-32 w-3/4 -translate-x-1/2 rounded-full blur-3xl ${glow} opacity-50`}
+          />
+
+          {/* Browser chrome frame */}
+          <div className="relative overflow-hidden rounded-2xl border border-zinc-700/50 shadow-2xl shadow-black/70">
+            {/* Title bar */}
+            <div className="flex items-center gap-1.5 border-b border-zinc-800 bg-zinc-900/90 px-4 py-2.5 backdrop-blur-sm">
+              <div className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
+              <div className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
+              <div className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+              <div className="mx-3 flex h-5 max-w-xs flex-1 items-center rounded-md bg-zinc-800 px-3">
+                <span className="text-xs text-zinc-500">
+                  {brandName.toLowerCase().replace(/\s+/g, '')}.app
+                </span>
+              </div>
+            </div>
+
+            {/* Screenshot */}
+            <div className="relative aspect-[16/9]">
+              <Image
+                src={`https://picsum.photos/seed/${imgSeed}/1280/720`}
+                alt={`${brandName} product preview`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1280px"
+                priority
+              />
+              {/* Brand color overlay */}
+              <div
+                className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${overlay} mix-blend-multiply`}
+              />
+              {/* Bottom fade to page background */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-zinc-950 to-transparent" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

@@ -1,14 +1,19 @@
-import OpenAI from 'openai'
+import { Agent, Runner } from '@openai/agents'
 
-let _client: OpenAI | null = null
+export { Agent }
 
-export function getOpenAIClient(): OpenAI {
-  if (!_client) {
-    const apiKey = process.env.OPENAI_API_KEY
-    if (!apiKey) {
-      throw new Error('OPENAI_API_KEY environment variable is required')
-    }
-    _client = new OpenAI({ apiKey })
+/**
+ * Shared runner with tracing disabled.
+ * Created once at module load; the API key is read by the SDK at call time.
+ */
+export const runner = new Runner({ tracingDisabled: true })
+
+/**
+ * Validates the OpenAI API key is set at runtime (not at build time).
+ * Called at the start of each API route handler.
+ */
+export function ensureApiKey(): void {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error('OPENAI_API_KEY environment variable is required')
   }
-  return _client
 }

@@ -6,7 +6,7 @@ import { DraftReview } from '@/components/generator/draft-review'
 import { GenerationProgress } from '@/components/generator/generation-progress'
 import { LandingPage } from '@/components/landing/landing-page'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, ExternalLink, RotateCcw } from 'lucide-react'
+import { ArrowLeft, RotateCcw } from 'lucide-react'
 import type { LandingPageDraft, FinalLandingPage, GeneratorStep } from '@/types/landing'
 
 export function GeneratorClient() {
@@ -87,25 +87,6 @@ export function GeneratorClient() {
             Start over
           </Button>
           <span className="text-xs text-zinc-500">Landing page preview</span>
-          <Button
-            variant="outline"
-            size="sm"
-            className="gap-1.5 text-xs"
-            onClick={() => {
-              const blob = new Blob([JSON.stringify(finalPage, null, 2)], {
-                type: 'application/json',
-              })
-              const url = URL.createObjectURL(blob)
-              const a = document.createElement('a')
-              a.href = url
-              a.download = `${finalPage.brandName.toLowerCase().replace(/\s+/g, '-')}-landing.json`
-              a.click()
-              URL.revokeObjectURL(url)
-            }}
-          >
-            <ExternalLink className="h-3.5 w-3.5" />
-            Export JSON
-          </Button>
         </div>
         <LandingPage page={finalPage} />
       </div>

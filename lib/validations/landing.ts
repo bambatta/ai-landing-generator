@@ -87,8 +87,8 @@ export const FinalSectionSchema = z.object({
   faqs: z.array(FAQItemSchema).optional(),
   stats: z.array(StatItemSchema).optional(),
   steps: z.array(HowItWorksStepSchema).optional(),
-  primaryCTA: z.string().optional(),
-  secondaryCTA: z.string().optional(),
+  primaryCTA: z.string().nullish(),
+  secondaryCTA: z.string().nullish(),
 })
 
 export const FinalLandingPageSchema = z.object({
