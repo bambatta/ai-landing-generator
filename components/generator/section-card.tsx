@@ -100,7 +100,7 @@ export function SectionCard({
           value={section.headline}
           onChange={(e) => onUpdate(section.id, { headline: e.target.value })}
           placeholder="Section headline…"
-          className="min-w-0 border-transparent bg-transparent px-0 text-sm font-semibold text-zinc-100 placeholder:text-zinc-600 hover:bg-zinc-800/50 focus-visible:bg-zinc-800/50 focus-visible:ring-0"
+          className="min-w-0 border-transparent bg-transparent px-2 text-sm font-semibold text-zinc-100 placeholder:text-zinc-600 hover:bg-zinc-800/50 focus-visible:bg-zinc-800/50 focus-visible:ring-0"
         />
       </div>
 
@@ -161,7 +161,7 @@ export function SectionCard({
                   onUpdate(section.id, { cta: { ...section.cta!, text: e.target.value } })
                 }
                 placeholder="CTA text…"
-                className="h-8 border-transparent bg-transparent px-0 text-sm text-violet-400 hover:bg-zinc-800/30"
+                className="h-8 border-transparent bg-transparent px-2 text-sm text-violet-400 hover:bg-zinc-800/30"
               />
             </div>
           )}
