@@ -2,7 +2,7 @@
 
 A production-quality MVP that generates polished, responsive landing pages from a single product description using GPT-4o.
 
-> **Live Demo:** _Deploy to Vercel and add your own URL here_
+> **Live Demo:** [ai-landing-generator-iota.vercel.app](https://ai-landing-generator-iota.vercel.app)
 
 ---
 
