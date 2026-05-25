@@ -19,12 +19,12 @@ const COLOR_HIGHLIGHTED: Record<string, string> = {
 }
 
 const COLOR_BADGE: Record<string, string> = {
-  violet: 'bg-violet-900/50 text-violet-300',
-  blue: 'bg-blue-900/50 text-blue-300',
-  emerald: 'bg-emerald-900/50 text-emerald-300',
-  orange: 'bg-orange-900/50 text-orange-300',
-  rose: 'bg-rose-900/50 text-rose-300',
-  cyan: 'bg-cyan-900/50 text-cyan-300',
+  violet: 'bg-violet-900 border border-violet-600 text-violet-300',
+  blue: 'bg-blue-900 border border-blue-600 text-blue-300',
+  emerald: 'bg-emerald-900 border border-emerald-600 text-emerald-300',
+  orange: 'bg-orange-900 border border-orange-600 text-orange-300',
+  rose: 'bg-rose-900 border border-rose-600 text-rose-300',
+  cyan: 'bg-cyan-900 border border-cyan-600 text-cyan-300',
 }
 
 const COLOR_BTN_MAIN: Record<string, string> = {

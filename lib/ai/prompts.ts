@@ -75,6 +75,7 @@ Return a JSON object:
       "type": "hero" | "features" | "testimonials" | "pricing" | "faq" | "cta" | "stats" | "how-it-works",
       "headline": "string",
       "subheadline": "string",
+      "imageKeywords": ["keyword1", "keyword2"],  // 2-4 specific nouns for image search (e.g. ["freelancer","accounting","dashboard"] or ["remote","team","collaboration"]) — be precise and product-relevant
 
       // for features section:
       "features": [{ "icon": "LucideIconName", "title": "string", "description": "string (1-2 sentences)" }],

@@ -28,6 +28,9 @@ export function HowItWorks({ section, primaryColor }: HowItWorksProps) {
   const numberStyle = COLOR_NUMBER[primaryColor] ?? COLOR_NUMBER.violet
   const tint = COLOR_TINT[primaryColor] ?? COLOR_TINT.violet
   const steps = section.steps ?? []
+  const baseKeywords = section.imageKeywords?.length
+    ? section.imageKeywords.join(',')
+    : 'workflow,process,technology'
 
   return (
     <section className="px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
@@ -51,11 +54,11 @@ export function HowItWorks({ section, primaryColor }: HowItWorksProps) {
                 <div className="relative w-full shrink-0 overflow-hidden rounded-xl border border-zinc-800 lg:w-1/2 lg:rounded-2xl">
                   <div className="relative aspect-video lg:aspect-[4/3]">
                     <Image
-                      src={`https://picsum.photos/seed/step-${step.step}/800/600`}
+                      unoptimized
+                      src={`https://loremflickr.com/800/600/${baseKeywords}?lock=${step.step}`}
                       alt={step.title}
                       fill
                       className="object-cover opacity-80"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     {/* Subtle tint */}
                     <div

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { RefreshCw, Trash2, ChevronDown, ChevronUp, Eye } from 'lucide-react'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
@@ -69,65 +69,48 @@ export function SectionCard({
     <Card className="group relative overflow-hidden border-zinc-800/80 transition-all duration-200 hover:border-zinc-700">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zinc-600 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
-      <CardHeader className="pb-3">
-        <div className="flex items-center gap-3">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-zinc-800 text-xs font-bold text-zinc-400">
-            {index + 1}
-          </div>
-          <span
-            className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold ${SECTION_COLORS[section.type]}`}
-          >
-            {SECTION_LABELS[section.type]}
-          </span>
-          <div className="ml-auto flex items-center gap-1.5">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => onRegenerate(section.id)}
-              disabled={isRegenerating}
-              className="h-7 gap-1.5 px-2 text-xs text-zinc-500 hover:text-zinc-300"
-            >
-              <RefreshCw className={`h-3 w-3 ${isRegenerating ? 'animate-spin' : ''}`} />
-              Regenerate
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => onRemove(section.id)}
-              className="h-7 w-7 p-0 text-zinc-600 hover:text-red-400"
-            >
-              <Trash2 className="h-3.5 w-3.5" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setExpanded(!expanded)}
-              className="h-7 w-7 p-0 text-zinc-500 hover:text-zinc-300"
-            >
-              {expanded ? (
-                <ChevronUp className="h-3.5 w-3.5" />
-              ) : (
-                <ChevronDown className="h-3.5 w-3.5" />
-              )}
-            </Button>
-          </div>
-        </div>
-        <div className="mt-2">
-          <Input
-            value={section.headline}
-            onChange={(e) => onUpdate(section.id, { headline: e.target.value })}
-            placeholder="Section headline..."
-            className="border-transparent bg-transparent px-0 text-base font-semibold text-zinc-100 placeholder:text-zinc-600 hover:bg-zinc-800/50 focus-visible:bg-zinc-800/50 focus-visible:ring-0"
-          />
-        </div>
-      </CardHeader>
+      {/* ── Row 1: type badge + expand toggle ─────────────────────────────── */}
+      <div className="flex items-center justify-between px-5 pt-4 pb-0">
+        <span
+          className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap ${SECTION_COLORS[section.type]}`}
+        >
+          {SECTION_LABELS[section.type]}
+        </span>
 
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setExpanded(!expanded)}
+          className="h-7 w-7 shrink-0 p-0 text-zinc-500 hover:text-zinc-300"
+        >
+          {expanded ? (
+            <ChevronUp className="h-3.5 w-3.5" />
+          ) : (
+            <ChevronDown className="h-3.5 w-3.5" />
+          )}
+        </Button>
+      </div>
+
+      {/* ── Row 2: number prefix + editable headline ───────────────────────── */}
+      <div className="flex items-center gap-2 px-5 pt-2 pb-3">
+        <span className="shrink-0 font-mono text-xs font-medium text-zinc-600">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <Input
+          value={section.headline}
+          onChange={(e) => onUpdate(section.id, { headline: e.target.value })}
+          placeholder="Section headline…"
+          className="min-w-0 border-transparent bg-transparent px-0 text-sm font-semibold text-zinc-100 placeholder:text-zinc-600 hover:bg-zinc-800/50 focus-visible:bg-zinc-800/50 focus-visible:ring-0"
+        />
+      </div>
+
+      {/* ── Expanded content ───────────────────────────────────────────────── */}
       {expanded && (
-        <CardContent className="space-y-4 pt-0">
+        <CardContent className="space-y-4 border-t border-zinc-800/50 pt-4">
           <Textarea
             value={section.subheadline}
             onChange={(e) => onUpdate(section.id, { subheadline: e.target.value })}
-            placeholder="Subheadline..."
+            placeholder="Subheadline…"
             className="min-h-[60px] border-zinc-800/50 bg-zinc-900/30 text-sm text-zinc-300"
           />
 
@@ -142,8 +125,8 @@ export function SectionCard({
                   <Input
                     value={bullet}
                     onChange={(e) => updateBullet(i, e.target.value)}
-                    placeholder="Key point..."
-                    className="h-8 border-transparent bg-transparent px-0 text-sm text-zinc-300 hover:bg-zinc-800/30"
+                    placeholder="Key point…"
+                    className="h-8 border-transparent bg-transparent px-2 text-sm text-zinc-300 hover:bg-zinc-800/30"
                     autoFocus={editingBulletIndex === i}
                     onFocus={() => setEditingBulletIndex(i)}
                     onBlur={() => setEditingBulletIndex(null)}
@@ -177,7 +160,7 @@ export function SectionCard({
                 onChange={(e) =>
                   onUpdate(section.id, { cta: { ...section.cta!, text: e.target.value } })
                 }
-                placeholder="CTA text..."
+                placeholder="CTA text…"
                 className="h-8 border-transparent bg-transparent px-0 text-sm text-violet-400 hover:bg-zinc-800/30"
               />
             </div>
@@ -189,6 +172,30 @@ export function SectionCard({
           </div>
         </CardContent>
       )}
+
+      {/* ── Action footer: always visible ─────────────────────────────────── */}
+      <div className="flex items-center justify-between border-t border-zinc-800/40 px-4 py-2">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => onRegenerate(section.id)}
+          disabled={isRegenerating}
+          className="h-7 gap-1.5 px-2 text-xs text-zinc-500 hover:text-zinc-300"
+        >
+          <RefreshCw className={`h-3 w-3 ${isRegenerating ? 'animate-spin' : ''}`} />
+          Regenerate
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => onRemove(section.id)}
+          className="h-7 gap-1.5 px-2 text-xs text-zinc-500 hover:text-red-400"
+        >
+          <Trash2 className="h-3 w-3" />
+          Remove
+        </Button>
+      </div>
     </Card>
   )
 }

@@ -205,7 +205,6 @@ The project enforces quality at every layer:
 | ------------ | ----------------------------------------------------------------------------- |
 | No database  | State lives in React — refresh loses progress. Acceptable for MVP.            |
 | No auth      | Anyone with the URL can use the generator. Add Clerk/NextAuth for production. |
-| No streaming | API routes return complete JSON. Streaming would improve perceived latency.   |
 | Client state | Draft/final page in `useState`. A DB + URL param would enable sharing links.  |
 | Single model | All calls use GPT-4o. Could add cost tiers with GPT-4o-mini for drafts.       |
 

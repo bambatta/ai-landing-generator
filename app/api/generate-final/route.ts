@@ -58,6 +58,11 @@ function sanitizeAIResponse(
           type,
           headline: typeof s.headline === 'string' ? s.headline : '',
           subheadline: typeof s.subheadline === 'string' ? s.subheadline : '',
+          imageKeywords:
+            Array.isArray(s.imageKeywords) &&
+            (s.imageKeywords as unknown[]).every((k) => typeof k === 'string')
+              ? (s.imageKeywords as string[])
+              : undefined,
           // Ensure array fields are actually arrays
           features: Array.isArray(s.features) ? s.features : undefined,
           testimonials: Array.isArray(s.testimonials) ? s.testimonials : undefined,

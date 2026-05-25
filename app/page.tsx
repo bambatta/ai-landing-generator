@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { Sparkles, Layers, Zap, PenLine } from 'lucide-react'
+import { Sparkles, Layers, Zap, Eye } from 'lucide-react'
 import { GeneratorClient } from '@/components/generator/generator-client'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export default function Home() {
   return (
@@ -14,13 +14,8 @@ export default function Home() {
             </div>
             <span className="text-sm font-semibold text-zinc-100">PageCraft AI</span>
           </div>
-          <nav className="flex items-center gap-4">
-            <Link
-              href="https://github.com"
-              className="text-xs text-zinc-500 transition-colors hover:text-zinc-300"
-            >
-              GitHub
-            </Link>
+          <nav className="flex items-center gap-2">
+            <ThemeToggle />
           </nav>
         </div>
       </header>
@@ -54,7 +49,7 @@ export default function Home() {
             {[
               { icon: Zap, label: 'AI-powered copy' },
               { icon: Layers, label: 'Editable sections' },
-              { icon: PenLine, label: 'One-click export' },
+              { icon: Eye, label: 'Instant preview' },
             ].map(({ icon: Icon, label }) => (
               <div
                 key={label}

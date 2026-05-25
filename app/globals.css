@@ -33,6 +33,138 @@
   --foreground: #fafafa;
 }
 
+html[data-theme='light'] {
+  --background: #fafafa;
+  --foreground: #18181b;
+
+  /* ── Zinc: full scale inversion so every bg/text/border zinc-* class flips ── */
+  --color-zinc-50: #09090b;
+  --color-zinc-100: #18181b;
+  --color-zinc-200: #27272a;
+  --color-zinc-300: #3f3f46;
+  --color-zinc-400: #52525b;
+  --color-zinc-500: #71717a; /* neutral midpoint — unchanged */
+  --color-zinc-600: #a1a1aa;
+  --color-zinc-700: #d4d4d8;
+  --color-zinc-800: #e4e4e7;
+  --color-zinc-900: #f4f4f5;
+  --color-zinc-950: #fafafa;
+
+  /* ── Colored accent palettes ──────────────────────────────────────────────── */
+  /* Badges:      bg-{c}-900/{30-60} → background   text-{c}-300 → text   border-{c}-800/50 → border  */
+  /* Image tints: from-{c}-950/30 and to-{c}-950/50                                                    */
+  /* Mapping: 950→100-shade  900→300-shade(key!)  800→200-shade  300→700-shade                         */
+  /* Using 300-shade for 900 means bg-{c}-900/50 is a clearly visible tint, not nearly white           */
+
+  /* Violet      950=100sh   900=300sh   800=200sh   300=700sh */
+  --color-violet-950: #ede9fe;
+  --color-violet-900: #c4b5fd;
+  --color-violet-800: #ddd6fe;
+  --color-violet-300: #6d28d9;
+
+  /* Indigo */
+  --color-indigo-950: #e0e7ff;
+  --color-indigo-900: #a5b4fc;
+  --color-indigo-800: #c7d2fe;
+  --color-indigo-300: #4338ca;
+
+  /* Blue */
+  --color-blue-950: #dbeafe;
+  --color-blue-900: #93c5fd;
+  --color-blue-800: #bfdbfe;
+  --color-blue-300: #1d4ed8;
+
+  /* Sky */
+  --color-sky-950: #e0f2fe;
+  --color-sky-900: #7dd3fc;
+  --color-sky-800: #bae6fd;
+  --color-sky-300: #0369a1;
+
+  /* Cyan */
+  --color-cyan-950: #cffafe;
+  --color-cyan-900: #67e8f9;
+  --color-cyan-800: #a5f3fc;
+  --color-cyan-300: #0e7490;
+
+  /* Teal */
+  --color-teal-950: #ccfbf1;
+  --color-teal-900: #5eead4;
+  --color-teal-800: #99f6e4;
+  --color-teal-300: #0f766e;
+
+  /* Emerald */
+  --color-emerald-950: #d1fae5;
+  --color-emerald-900: #6ee7b7;
+  --color-emerald-800: #a7f3d0;
+  --color-emerald-300: #047857;
+
+  /* Green */
+  --color-green-950: #dcfce7;
+  --color-green-900: #86efac;
+  --color-green-800: #bbf7d0;
+  --color-green-300: #15803d;
+
+  /* Amber */
+  --color-amber-950: #fef3c7;
+  --color-amber-900: #fcd34d;
+  --color-amber-800: #fde68a;
+  --color-amber-300: #b45309;
+
+  /* Orange */
+  --color-orange-950: #ffedd5;
+  --color-orange-900: #fdba74;
+  --color-orange-800: #fed7aa;
+  --color-orange-300: #c2410c;
+
+  /* Rose */
+  --color-rose-950: #ffe4e6;
+  --color-rose-900: #fda4af;
+  --color-rose-800: #fecdd3;
+  --color-rose-300: #be123c;
+
+  /* Pink */
+  --color-pink-950: #fce7f3;
+  --color-pink-900: #f9a8d4;
+  --color-pink-800: #fbcfe8;
+  --color-pink-300: #be185d;
+
+  /* Purple */
+  --color-purple-950: #f3e8ff;
+  --color-purple-900: #d8b4fe;
+  --color-purple-800: #e9d5ff;
+  --color-purple-300: #7e22ce;
+
+  /* Fuchsia */
+  --color-fuchsia-950: #fae8ff;
+  --color-fuchsia-900: #f0abfc;
+  --color-fuchsia-800: #f5d0fe;
+  --color-fuchsia-300: #a21caf;
+
+  /* Red */
+  --color-red-950: #fee2e2;
+  --color-red-900: #fca5a5;
+  --color-red-800: #fecaca;
+  --color-red-300: #b91c1c;
+
+  /* Yellow */
+  --color-yellow-950: #fef9c3;
+  --color-yellow-900: #fde047;
+  --color-yellow-800: #fef08a;
+  --color-yellow-300: #a16207;
+}
+
+html[data-theme='light'] ::-webkit-scrollbar-track {
+  background: #e4e4e7;
+}
+
+html[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: #a1a1aa;
+}
+
+html[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+
 * {
   box-sizing: border-box;
 }

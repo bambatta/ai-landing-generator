@@ -53,7 +53,10 @@ export function HeroSection({ section, brandName, primaryColor }: HeroSectionPro
   const btn = COLOR_BTN[primaryColor] ?? COLOR_BTN.violet
   const overlay = COLOR_OVERLAY[primaryColor] ?? COLOR_OVERLAY.violet
 
-  const imgSeed = section.id
+  const imgKeywords = section.imageKeywords?.length
+    ? section.imageKeywords.join(',')
+    : 'software,dashboard,interface'
+  const imgSrc = `https://loremflickr.com/1280/720/${imgKeywords}?lock=1`
 
   return (
     <section className="relative overflow-hidden px-4 pt-20 pb-16 sm:px-6 sm:pt-32 sm:pb-24 lg:px-8">
@@ -127,11 +130,11 @@ export function HeroSection({ section, brandName, primaryColor }: HeroSectionPro
             {/* Screenshot */}
             <div className="relative aspect-video sm:aspect-[16/9]">
               <Image
-                src={`https://picsum.photos/seed/${imgSeed}/1280/720`}
+                unoptimized
+                src={imgSrc}
                 alt={`${brandName} product preview`}
                 fill
                 className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 1200px) 80vw, 1280px"
                 priority
               />
               {/* Subtle brand tint */}

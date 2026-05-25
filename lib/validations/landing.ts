@@ -81,6 +81,7 @@ export const FinalSectionSchema = z.object({
   type: SectionTypeSchema,
   headline: z.string(),
   subheadline: z.string(),
+  imageKeywords: z.array(z.string()).optional(),
   features: z.array(FeatureItemSchema).optional(),
   testimonials: z.array(TestimonialItemSchema).optional(),
   pricingTiers: z.array(PricingTierSchema).optional(),

@@ -78,6 +78,7 @@ export interface FinalSection {
   type: SectionType
   headline: string
   subheadline: string
+  imageKeywords?: string[]
   features?: FeatureItem[]
   testimonials?: TestimonialItem[]
   pricingTiers?: PricingTier[]

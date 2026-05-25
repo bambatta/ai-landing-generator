@@ -39,6 +39,7 @@ export function FeatureGrid({ section, primaryColor }: FeatureGridProps) {
   const iconBg = COLOR_ICON_BG[primaryColor] ?? COLOR_ICON_BG.violet
   const tint = COLOR_TINT[primaryColor] ?? COLOR_TINT.violet
   const features = section.features ?? []
+  const baseKeyword = section.imageKeywords?.[0] ?? 'technology'
 
   return (
     <section className="px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
@@ -59,11 +60,18 @@ export function FeatureGrid({ section, primaryColor }: FeatureGridProps) {
               {/* Feature image — visible at 80%, light tint, bottom fade */}
               <div className="relative h-40 overflow-hidden">
                 <Image
-                  src={`https://picsum.photos/seed/${section.id}-${i}/600/300`}
+                  unoptimized
+                  src={`https://loremflickr.com/600/300/${baseKeyword},${
+                    // First meaningful word of the feature title — forces unique image per card
+                    feature.title
+                      .split(/\s+/)
+                      .find((w) => w.length > 3)
+                      ?.toLowerCase()
+                      .replace(/[^a-z]/g, '') ?? feature.icon.toLowerCase().replace(/[0-9]/g, '')
+                  }?lock=${i * 31 + 7}`}
                   alt={feature.title}
                   fill
                   className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 {/* Subtle brand tint — barely there */}
                 <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${tint}`} />

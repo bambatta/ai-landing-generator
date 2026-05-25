@@ -19,13 +19,15 @@ export function NavBar({ brandName, primaryCTA, primaryColor }: NavBarProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2">
           <div
-            className={`h-7 w-7 rounded-lg bg-gradient-to-br ${btn} flex items-center justify-center text-xs font-bold text-white`}
+            className={`h-7 w-7 shrink-0 rounded-lg bg-gradient-to-br ${btn} flex items-center justify-center text-xs font-bold text-white`}
           >
             {brandName[0]}
           </div>
-          <span className="text-base font-semibold text-zinc-100">{brandName}</span>
+          <span className="truncate text-sm font-semibold text-zinc-100 sm:text-base">
+            {brandName}
+          </span>
         </div>
 
         <nav className="hidden items-center gap-6 sm:flex">
@@ -42,7 +44,7 @@ export function NavBar({ brandName, primaryCTA, primaryColor }: NavBarProps) {
 
         <a
           href="#"
-          className={`rounded-xl bg-gradient-to-r ${btn} px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:shadow-md`}
+          className={`shrink-0 rounded-xl bg-gradient-to-r whitespace-nowrap ${btn} px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:shadow-md`}
         >
           {primaryCTA ?? 'Get Started'}
         </a>

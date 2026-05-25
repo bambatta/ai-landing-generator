@@ -86,13 +86,13 @@ export function PromptInput({ onSubmit, isLoading }: PromptInputProps) {
           <Zap className="h-3.5 w-3.5 text-zinc-600" />
           <p className="text-xs font-medium tracking-wider text-zinc-600 uppercase">Examples</p>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap justify-start gap-2">
           {EXAMPLE_PROMPTS.map((prompt) => (
             <button
               key={prompt}
               onClick={() => applyExample(prompt)}
               disabled={isLoading}
-              className="rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1.5 text-xs text-zinc-400 transition-all hover:border-zinc-700 hover:bg-zinc-800 hover:text-zinc-300 disabled:opacity-40"
+              className="rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1.5 text-left text-xs text-zinc-400 transition-all hover:border-zinc-700 hover:bg-zinc-800 hover:text-zinc-300 disabled:opacity-40"
             >
               {prompt}
             </button>

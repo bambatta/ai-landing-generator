@@ -104,7 +104,7 @@ export function DraftReview({ draft, onUpdate, onApprove, isGenerating }: DraftR
             Sections{' '}
             <span className="ml-1 text-zinc-600">— edit, remove, or regenerate any section</span>
           </p>
-          <Badge variant="secondary" className="text-xs">
+          <Badge variant="secondary" className="shrink-0 text-xs whitespace-nowrap">
             {draft.sections.length} total
           </Badge>
         </div>
